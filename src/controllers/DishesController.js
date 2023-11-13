@@ -35,8 +35,15 @@ class DishesController {
         return response.json({ ...dish, ingredients });
 
     }
+
     // async update(request, response) { }
-    // async delete(request, response) { }
+    async delete(request, response) {
+        const { id } = request.params;
+
+        await knex("dishes").where({ id }).delete();
+
+        return response.json();
+    }
     // async index(request, response) { }
 }
 
